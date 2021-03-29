@@ -13,14 +13,24 @@ const url=`http://localhost:3000/api/teddies/${id}`;
 fetch(url)
 .then(res => res.json()
 .then(data => {
-    console.log(data);
+    affichageProduit(data);
+    }
+)
+)
+
+// fonction d'insertion des élements dans la page produit
+
+function affichageProduit (data) {
+    // variable à inserer
     nom = data.name;
     description = data.description;
     price = data.price;
     imageUrl = data.imageUrl;
     colors = data.colors;
-    console.log(nom);
+  
 
+
+    // HTML à inserer
     structureProduit = 
         `
         <div class="produit">
@@ -40,6 +50,4 @@ fetch(url)
     // Injection dans le document
     positionElement.innerHTML = structureProduit;
 
-}
-)
-)
+};
