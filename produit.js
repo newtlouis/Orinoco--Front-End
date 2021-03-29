@@ -12,10 +12,10 @@ console.log(id);
 const url=`http://localhost:3000/api/teddies/${id}`;
 fetch(url)
 .then(res => res.json()
-.then(data => {
-    affichageProduit(data);
-    }
-)
+    .then(data => {
+        affichageProduit(data);
+        }
+    )
 )
 
 // fonction d'insertion des élements dans la page produit
@@ -31,6 +31,20 @@ function affichageProduit (data) {
 
 
     // HTML à inserer
+
+    // Liste de couleur
+    htmlCouleurs = `<select name="Selection de couleur" id="wtf">`;
+    colors.forEach((element, i) => {
+        htmlCouleurs +=
+        `
+        <option value="${colors[i]}">${colors[i]}</option>
+        
+        ` }
+    
+    );
+    htmlCouleurs += `</select> `;
+
+
     structureProduit = 
         `
         <div class="produit">
@@ -40,7 +54,8 @@ function affichageProduit (data) {
                 <li>Nom: <span>${nom}</span></li>
                 <li>Decription: <span>${description}</span></li>
                 <li>Prix: <span>${price}</span></li>
-                <li>Couleur: <span>${colors}</span></li>
+                <li>Couleur:` + `${htmlCouleurs}`+
+                ` 
             </ul>
         </div>
     </div>
