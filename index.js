@@ -43,7 +43,7 @@ let positionElement = document.querySelector(".container__accueil");
                 <ul>
                     <li>Nom: <span>${nom[i]}</span></li>
                     <li>Decription: <span>${description[i]}</span></li>
-                    <li>Prix: <span>${price[i]}</span></li>
+                    <li>Prix: <span>${price[i]/100}€</span></li>
                     <li>Couleur: <span>${colors[i]}</span></li>
                 </ul>
             </div>

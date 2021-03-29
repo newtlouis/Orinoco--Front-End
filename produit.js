@@ -53,7 +53,7 @@ function affichageProduit (data) {
             <ul>
                 <li>Nom: <span>${nom}</span></li>
                 <li>Decription: <span>${description}</span></li>
-                <li>Prix: <span>${price}</span></li>
+                <li>Prix: <span>${price/100}€</span></li>
                 <li>Couleur:` + `${htmlCouleurs}`+
                 ` 
             </ul>
