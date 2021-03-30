@@ -98,59 +98,80 @@ btnEnvoyerFormulaire.addEventListener("click",(e) => {
 
 // Fonction pop up de confirmation
 function popUpConfirmationCommande () {
+
+    // Si le client confirme la commande, alors on envoie la commande
     if ( window.confirm(`Souhaitez vous passer commande ? `) )
-    {
-         // Mettre les données du formulaire dans un objet
-    formulaire = {
-        prenom : document.querySelector("#prenom").value,
-        nom : document.querySelector("#nom").value,
-        adresse : document.querySelector("#adresse").value,
-        ville : document.querySelector("#ville").value,
-        codePostal : document.querySelector("#codePostal").value,
-        email : document.querySelector("#email").value,
-    };
+        {
 
-    // Création de l'objet qu'il faut envoyer au serveur
-    infoPourLeServeur = {
-        formulaire,
-        panier,
-    };
+         // Rassemblez les données du formulaire
+        formulaire = {
+            prenom : document.querySelector("#prenom").value,
+            nom : document.querySelector("#nom").value,
+            adresse : document.querySelector("#adresse").value,
+            ville : document.querySelector("#ville").value,
+            codePostal : document.querySelector("#codePostal").value,
+            email : document.querySelector("#email").value,
+            };
 
-    // // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
-    // localStorage.setItem("Commandes",JSON.stringify(infoPourLeServeur));
-    // console.log(infoPourLeServeur);
+        // Si le texte des données du formulaire est bon, alors on execute le reste du code
+        console.log(formulaire.prenom);
+        if ( /^[A-Za-z]{3,20}$/.test(formulaire.prenom) && /^[A-Za-z]{3,20}$/.test(formulaire.prenom) ) {console.log("yes")}
+        else {console.log("no")};
+        
+        if ( /^[A-Za-z]{3,20}$/.test(formulaire.prenom) && /^[A-Za-z]{3,20}$/.test(formulaire.nom) && /^[A-Za-z]{3,20}$/.test(formulaire.ville) && /^[0-9]{5}$/.test(formulaire.codePostal) && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formulaire.email) )
+            {
+
+            // Création de l'objet qu'il faut envoyer au serveur
+            infoPourLeServeur = {
+                formulaire,
+                panier,
+            };
+
+            // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
 
      // Connexion au local storage et récupération du panier
-     let commandes = JSON.parse(localStorage.getItem("Commandes"));
-     console.log(commandes);
+            let commandes = JSON.parse(localStorage.getItem("Commandes"));
+            console.log(commandes);
  
-     // Si il y a déjà des commandes, alors on y ajoute la nouvelle commande et on renvoit le tout 
-     if(commandes) {
-         commandes.push(infoPourLeServeur);
-         localStorage.setItem("Commandes",JSON.stringify(commandes));
+            // Si il y a déjà des commandes, alors on y ajoute la nouvelle commande et on renvoit le tout 
+            if(commandes) {
+                commandes.push(infoPourLeServeur);
+                localStorage.setItem("Commandes",JSON.stringify(commandes));
 
-         //  On vide le panier quand la commande est envoyée
-        localStorage.removeItem("panier");
+                //  On vide le panier quand la commande est envoyée
+                localStorage.removeItem("panier");
 
-        // Redirection vers la page de confirmation
-         window.location.href = "confirmation.html"
+                // Redirection vers la page de confirmation
+                window.location.href = "confirmation.html"
          
-     }
-     // S'il n'y a pas encore de commande', alors on crée une commande vide et on la rempli
-     else {
-         commandes = [];
-         commandes.push(infoPourLeServeur);
-         localStorage.setItem("Commandes",JSON.stringify(commandes));
+                }
+            // S'il n'y a pas encore de commande', alors on crée une commande vide et on la rempli
+            else {
+                commandes = [];
+                commandes.push(infoPourLeServeur);
+                localStorage.setItem("Commandes",JSON.stringify(commandes));
          
-         //  On vide le panier quand la commande est envoyée
-        localStorage.removeItem("panier");
+                //  On vide le panier quand la commande est envoyée
+                localStorage.removeItem("panier");
 
-        // Redirection vers la page de confirmation
-         window.location.href = "confirmation.html"
-
-         
-     };
+                // Redirection vers la page de confirmation
+                window.location.href = "confirmation.html"
+        
+                };
  
-    }
-    else { window.location.href = "panier.html";}
+            }
+        // Si les données du formulaires sont pas bon, alors pop up alert 
+        else{
+            console.log("Mauvais");
+            alert("Les données du formulaire sont incorrects");
+            };
+
+        }
+    // Si le client refuse de confirmer la commande, alors on retourne sur la page panier
+    else { window.location.href = "panier.html"};
 }
+
+
+
+
+
