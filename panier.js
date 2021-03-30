@@ -128,13 +128,24 @@ btnEnvoyerFormulaire.addEventListener("click",(e) => {
      if(commandes) {
          commandes.push(infoPourLeServeur);
          localStorage.setItem("Commandes",JSON.stringify(commandes));
+
+         //  On vide le panier quand la commande est envoyée
+        localStorage.removeItem("produit");
+
+        // Redirection vers la page de confirmation
          window.location.href = "confirmation.html"
+         
      }
      // S'il est vide, alors on crée un panier
      else {
          commandes = [];
          commandes.push(infoPourLeServeur);
          localStorage.setItem("Commandes",JSON.stringify(commandes));
+         
+         //  On vide le panier quand la commande est envoyée
+        localStorage.removeItem("produit");
+
+        // Redirection vers la page de confirmation
          window.location.href = "confirmation.html"
 
          
