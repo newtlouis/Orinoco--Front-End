@@ -118,7 +118,7 @@ function popUpConfirmationCommande () {
         if ( /^[A-Za-z]{3,20}$/.test(formulaire.prenom) && /^[A-Za-z]{3,20}$/.test(formulaire.prenom) ) {console.log("yes")}
         else {console.log("no")};
         
-        if ( /^[A-Za-z]{3,20}$/.test(formulaire.prenom) && /^[A-Za-z]{3,20}$/.test(formulaire.nom) && /^[A-Za-z]{3,20}$/.test(formulaire.ville) && /^[0-9]{5}$/.test(formulaire.codePostal) && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formulaire.email) )
+        if ( /^[A-Za-z]{3,20}$/.test(formulaire.prenom) && /^[A-Za-z]{3,20}$/.test(formulaire.nom) && /^[A-Za-z]{3,20}$/.test(formulaire.ville) && /^[0-9]{5}$/.test(formulaire.codePostal) && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formulaire.email) && /^[A-Za-z0-9\s]{5,50}$/.test(formulaire.adresse) )
             {
 
             // Création de l'objet qu'il faut envoyer au serveur
