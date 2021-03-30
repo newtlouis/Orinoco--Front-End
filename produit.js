@@ -88,20 +88,20 @@ btnEnvoyerPanier.addEventListener("click",(e) => {
     
 
     // Connexion au local storage et récupération du panier
-    let panier = JSON.parse(localStorage.getItem("produit"));
+    let panier = JSON.parse(localStorage.getItem("panier"));
     console.log(panier);
 
     // Si le panier n'est pas vide: alors on y ajoute le nouveau produit et on renvoit le tout 
     if(panier) {
         panier.push(optionProduit);
-        localStorage.setItem("produit",JSON.stringify(panier));
+        localStorage.setItem("panier",JSON.stringify(panier));
         popUpConfirmation();
     }
     // S'il n'est pas vide, alors on crée un panier
     else {
         panier = [];
         panier.push(optionProduit);
-        localStorage.setItem("produit",JSON.stringify(panier));
+        localStorage.setItem("panier",JSON.stringify(panier));
         popUpConfirmation();
         
     }

@@ -4,7 +4,7 @@ const positionElement = document.querySelector(".container__panier");
 
 
 // Récuperation des produits du paniers
-let panier = JSON.parse(localStorage.getItem("produit"));
+let panier = JSON.parse(localStorage.getItem("panier"));
 
 
 // S'il y a des produits dans le panier => on affiche les produits et le formulaire
@@ -96,8 +96,8 @@ btnEnvoyerFormulaire.addEventListener("click",(e) => {
     popUpConfirmationCommande();
 });
 
-   //    // Fonction pop up de confirmation
-   function popUpConfirmationCommande () {
+// Fonction pop up de confirmation
+function popUpConfirmationCommande () {
     if ( window.confirm(`Souhaitez vous passer commande ? `) )
     {
          // Mettre les données du formulaire dans un objet
@@ -124,26 +124,26 @@ btnEnvoyerFormulaire.addEventListener("click",(e) => {
      let commandes = JSON.parse(localStorage.getItem("Commandes"));
      console.log(commandes);
  
-     // Si les commandes enregistrées n'est pas vide: alors on y ajoute le nouveau produit et on renvoit le tout 
+     // Si il y a déjà des commandes, alors on y ajoute la nouvelle commande et on renvoit le tout 
      if(commandes) {
          commandes.push(infoPourLeServeur);
          localStorage.setItem("Commandes",JSON.stringify(commandes));
 
          //  On vide le panier quand la commande est envoyée
-        localStorage.removeItem("produit");
+        localStorage.removeItem("panier");
 
         // Redirection vers la page de confirmation
          window.location.href = "confirmation.html"
          
      }
-     // S'il est vide, alors on crée un panier
+     // S'il n'y a pas encore de commande', alors on crée une commande vide et on la rempli
      else {
          commandes = [];
          commandes.push(infoPourLeServeur);
          localStorage.setItem("Commandes",JSON.stringify(commandes));
          
          //  On vide le panier quand la commande est envoyée
-        localStorage.removeItem("produit");
+        localStorage.removeItem("panier");
 
         // Redirection vers la page de confirmation
          window.location.href = "confirmation.html"
