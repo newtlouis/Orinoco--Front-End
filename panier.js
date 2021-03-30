@@ -5,6 +5,8 @@ const positionElement = document.querySelector(".container__panier");
 // Récuperation des produits du paniers
 let panier = JSON.parse(localStorage.getItem("produit"));
 
+
+// S'il y a des produits dans le panier => on affiche les produits et le formulaire
 if (panier){
 
 // Bouche for pour ajouter les produits du panier dans la page panier
@@ -51,6 +53,36 @@ console.log(total);
 // Insertion du total dans le panier
 positionTotal = document.querySelector(".total");
 positionTotal.innerHTML = "Total:" + total + "€";
+
+
+// Affichage du formulaire
+// création du formulaire
+structureFormulaire = `
+<h2>Remplissez le formulaire pour passer la commande</h2>
+    <label for="prenom">Prenom:</label>
+    <input type="text" id="prenom" name="prenom" required>
+
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="adresse">Adresse postale:</label>
+    <textarea id="adresse" name="adresse" required></textarea>
+
+    <label for="ville">ville:</label>
+    <input type="text" id="ville" name="ville" required>
+
+    <label for="codePostal">Code postal:</label>
+    <input type="text" id="codePostal name="codePostal" required>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+
+    <button id="envoyerFormulaire" type="submit">Confirmation de la commande</button>
+`;
+//  Injection dans le fichier HTML
+positionFormulaire = document.querySelector(".formulaire");
+positionFormulaire.innerHTML = structureFormulaire; 
+
 
 }
 
