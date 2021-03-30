@@ -93,9 +93,14 @@ else {
 btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
 btnEnvoyerFormulaire.addEventListener("click",(e) => {
     e.preventDefault();
+    popUpConfirmationCommande();
+});
 
-  
-    // Mettre les données du formulaire dans un objet
+   //    // Fonction pop up de confirmation
+   function popUpConfirmationCommande () {
+    if ( window.confirm(`Souhaitez vous passer commande ? `) )
+    {
+         // Mettre les données du formulaire dans un objet
     formulaire = {
         prenom : document.querySelector("#prenom").value,
         nom : document.querySelector("#nom").value,
@@ -123,25 +128,18 @@ btnEnvoyerFormulaire.addEventListener("click",(e) => {
      if(commandes) {
          commandes.push(infoPourLeServeur);
          localStorage.setItem("Commandes",JSON.stringify(commandes));
-        //  popUpConfirmation();
+         window.location.href = "confirmation.html"
      }
      // S'il est vide, alors on crée un panier
      else {
          commandes = [];
          commandes.push(infoPourLeServeur);
          localStorage.setItem("Commandes",JSON.stringify(commandes));
-        //  popUpConfirmation();
+         window.location.href = "confirmation.html"
+
          
-     }
+     };
  
-    //    // Fonction pop up de confirmation
-    //    function popUpConfirmation () {
-    //      if ( window.confirm(`${nom} en couleur ${optionChoice} à bien été ajouter au panier. Cliquez sur OK pour consulter votre panier et ANNULER pour revenir à la page d'accueil.`) )
-    //      {
-    //          window.location.href = "panier.html";
-    //      }
-    //      else { window.location.href = "index.html";}
-    //  }
-
-
-})
+    }
+    else { window.location.href = "panier.html";}
+}
