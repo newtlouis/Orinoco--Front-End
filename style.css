@@ -2,9 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* list-style: none;
-    text-decoration: none;
-    color: black; */
+  
 }
 
 .container__accueil{
@@ -19,6 +17,10 @@ a, ul, .card-body {
     color: black;
 }
 
+.produit__info{
+    margin-top: 25%;
+}
+
 #button__panier{
     margin-left: 45%;
 }
@@ -29,4 +31,22 @@ a, ul, .card-body {
 
 .confirmation{
     margin: 15% 5%;
+}
+
+.btn-secondary{
+    margin-left: 10%;
+}
+
+.total{
+    margin: 10% 40%;
+}
+
+.image__panier{
+    width: 50%;
+    height: 50%;
+    margin-top: 25%;
+}
+
+.produit{
+    display: flex;
 }

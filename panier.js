@@ -19,18 +19,18 @@ panier.forEach((element, i) => {
     `
     <a href="produit.html?id=${element.idProduit}">
         <div class="produit">
-          
+            <img class="image__panier" src="${element.imgProduit}" alt="">        
             <div class="produit__info">
                 <ul>
-                    <li>Nom: <span>${element.nomProduit}</span></li>
-                    <li>Couleur: <span>${element.optionProduit}</span></li>
-                    <li>Prix: <span>${element.prix}€</span></li>
-                    <li>Quantité: <span>${element.quantité}</span></li>
+                    <li><strong>Produit:</strong> <span>${element.nomProduit}</span></li>
+                    <li><strong>Couleur:</strong> <span>${element.optionProduit}</span></li>
+                    <li><strong>Prix:</strong> <span>${element.prix}€</span></li>
+                    <li><strong>Quantité:</strong> <span>${element.quantité}</span></li>
                 </ul>
             </div>
         </div>
     </a>
-    <button type="button" class="btn btn-secondary">Supprimer</button>
+    
     
 
 
@@ -48,7 +48,7 @@ panier.forEach(element => {
 
 // Insertion du total dans le panier
 positionTotal = document.querySelector(".total");
-positionTotal.innerHTML = "Total:" + total + "€";
+positionTotal.innerHTML = "<strong>Total:</strong> " + total + "€";
 
 
 // Affichage du formulaire

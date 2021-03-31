@@ -91,6 +91,7 @@ btnEnvoyerPanier.addEventListener("click",(e) => {
         optionProduit : optionChoice,
         quantité : 1,
         prix : price/100,
+        imgProduit : imageUrl,
     };
     
 
