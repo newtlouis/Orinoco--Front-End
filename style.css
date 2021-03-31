@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* list-style: none;
+    text-decoration: none;
+    color: black; */
+}
+
+.container__accueil{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+a, ul, .card-body {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+
+#button__panier{
+    margin-left: 45%;
+}
+
+.erreur__dans__le__formulaire{
+    color: red;
+}

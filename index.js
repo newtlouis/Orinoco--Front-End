@@ -36,16 +36,21 @@ let positionElement = document.querySelector(".container__accueil");
     // Création des textes qu'on va injecter dans le document
     structureProduit += 
     `
+        
+
     <a href="produit.html?id=${id[i]}">
-        <div class="produit">
-            <img src="${imageUrl[i]}" alt="">
-            <div class="produit__info">
-                <ul>
-                    <li>Nom: <span>${nom[i]}</span></li>
-                    <li>Decription: <span>${description[i]}</span></li>
-                    <li>Prix: <span>${price[i]/100}€</span></li>
-                    <li>Couleur: <span>${colors[i]}</span></li>
-                </ul>
+        <div class="card" style="width: 18rem;">
+            <img src="${imageUrl[i]}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${nom[i]}</h5>
+                <p class="card-text">
+                    <ul>
+                        <li><strong>Nom:</strong> <span>${nom[i]}</span></li>
+                        <li><strong>Decription:</strong> <span>${description[i]}</span></li>
+                        <li><strong>Prix:</strong> <span>${price[i]/100}€</span></li>
+                        <li><strong>Couleur:</strong> <span>${colors[i]}</span></li>
+                    </ul>    
+                </p>
             </div>
         </div>
     </a>

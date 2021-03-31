@@ -30,7 +30,7 @@ panier.forEach((element, i) => {
             </div>
         </div>
     </a>
-    <button class="btn--supprimer">Suprimer</button>
+    <button type="button" class="btn btn-secondary">Supprimer</button>
 
 
     `
@@ -55,25 +55,32 @@ positionTotal.innerHTML = "Total:" + total + "€";
 structureFormulaire = `
 <h2>Remplissez le formulaire pour passer la commande</h2>
     
-    <label for="prenom">Prenom:<span id="prenomManquant"></span></label>
-    <input type="text" id="prenom" name="prenom" required>
+    <span class="erreur__dans__le__formulaire" id="prenomManquant"></span>
+    <input id="prenom" name="prenom" class="form-control" type="text" placeholder="Prenom" aria-label="prenom">
+    <br/>
 
-    <label for="nom">Nom:<span id="nomManquant"></span></label>
-    <input type="text" id="nom" name="nom" required>
+    <span class="erreur__dans__le__formulaire" id="nomManquant"></span>
+    <input type="text" id="nom" name="nom" class="form-control" type="text" placeholder="Nom" aria-label="prenom">
+    <br/>
 
-    <label for="adresse">Adresse postale:<span id="adresseManquant"></span></label>
-    <textarea id="adresse" name="adresse" required></textarea>
+    <span class="erreur__dans__le__formulaire" id="adresseManquant"></span>
+    <textarea id="adresse" name="adresse" class="form-control" type="text" placeholder="Adresse" aria-label="prenom"></textarea>
+    <br/>
 
-    <label for="ville">ville:<span id="villeManquant"></span></label>
-    <input type="text" id="ville" name="ville" required>
+    <span class="erreur__dans__le__formulaire" id="villeManquant"></span>
+    <input type="text" id="ville" class="form-control" type="text" placeholder=Ville aria-label="prenom">
+    <br/>
 
-    <label for="codePostal">Code postal:<span id="codePostalManquant"></span></label>
-    <input type="text" id="codePostal" name="codePostal" required>
+    <span class="erreur__dans__le__formulaire" id="codePostalManquant"></span>
+    <input type="text" id="codePostal" name="codePostal" class="form-control" type="text" placeholder="Code postal" aria-label="prenom">
+    <br/>
 
-    <label for="email">Email:<span id="emailManquant"></span></label>
-    <input type="text" id="email" name="email" required>
+    <span class="erreur__dans__le__formulaire" id="emailManquant"></span>
+    <input type="text" id="email" name="email" class="form-control" type="text" placeholder="Email" aria-label="prenom">
+    <br/>
 
-    <button id="envoyerFormulaire" type="submit">Confirmation de la commande</button>
+    <button id="envoyerFormulaire" class="btn btn-success" type="submit">Confirmation de la commande</button>
+    
 `;
 //  Injection dans le fichier HTML
 positionFormulaire = document.querySelector(".formulaire");

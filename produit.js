@@ -44,18 +44,25 @@ function affichageProduit (data) {
 
 
     structureProduit = 
+    
         `
-        <div class="produit">
-            <img src="${imageUrl}" alt="">
-            <div class="produit__info">
-                <ul>
-                    <li>Nom: <span>${nom}</span></li>
-                    <li>Decription: <span>${description}</span></li>
-                    <li>Prix: <span>${price/100}€</span></li>
-                    <li>Couleur:` + `${htmlCouleurs}`+
-                ` 
-                </ul>
+        <div class="row produit">
+            <div class ="col-md-6">
+                <img src="${imageUrl}" class="img-fluid" alt="...">
+               
             </div>
+
+            <div class ="col-md-6">
+                <div class="produit__info">
+                <ul>
+                    <li><strong>Nom:</strong> <span>${nom}</span></li>
+                    <li><strong>description:</strong> <span>${description}</span></li>
+                    <li><strong>Prix:</strong> <span>${price/100}€</span></li>
+                    <li><strong>Couleurs disponibles:</strong>` + ` ${htmlCouleurs}`+` 
+                </ul>
+                </div>
+            </div>
+
         </div>
         `
     // console.log(structureProduit);
