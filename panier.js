@@ -54,22 +54,23 @@ positionTotal.innerHTML = "Total:" + total + "€";
 // création du formulaire
 structureFormulaire = `
 <h2>Remplissez le formulaire pour passer la commande</h2>
-    <label for="prenom">Prenom:</label>
+    
+    <label for="prenom">Prenom:<span id="prenomManquant"></span></label>
     <input type="text" id="prenom" name="prenom" required>
 
-    <label for="nom">Nom:</label>
+    <label for="nom">Nom:<span id="nomManquant"></span></label>
     <input type="text" id="nom" name="nom" required>
 
-    <label for="adresse">Adresse postale:</label>
+    <label for="adresse">Adresse postale:<span id="adresseManquant"></span></label>
     <textarea id="adresse" name="adresse" required></textarea>
 
-    <label for="ville">ville:</label>
+    <label for="ville">ville:<span id="villeManquant"></span></label>
     <input type="text" id="ville" name="ville" required>
 
-    <label for="codePostal">Code postal:</label>
+    <label for="codePostal">Code postal:<span id="codePostalManquant"></span></label>
     <input type="text" id="codePostal" name="codePostal" required>
 
-    <label for="email">Email:</label>
+    <label for="email">Email:<span id="emailManquant"></span></label>
     <input type="text" id="email" name="email" required>
 
     <button id="envoyerFormulaire" type="submit">Confirmation de la commande</button>
@@ -115,10 +116,68 @@ function popUpConfirmationCommande () {
 
         // Si le texte des données du formulaire est bon, alors on execute le reste du code
         console.log(formulaire.prenom);
-        if ( /^[A-Za-z]{3,20}$/.test(formulaire.prenom) && /^[A-Za-z]{3,20}$/.test(formulaire.prenom) ) {console.log("yes")}
-        else {console.log("no")};
+
+        // Fonction de test du prenom
+        function prenomControle()
+            {
+            if  (/^[A-Za-z]{3,20}$/.test(formulaire.prenom))
+                {return true}
+            else
+                {document.querySelector("#prenomManquant").innerHTML = "Veuillez remplir ce champ"
+                };
+            };
         
-        if ( /^[A-Za-z]{3,20}$/.test(formulaire.prenom) && /^[A-Za-z]{3,20}$/.test(formulaire.nom) && /^[A-Za-z]{3,20}$/.test(formulaire.ville) && /^[0-9]{5}$/.test(formulaire.codePostal) && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formulaire.email) && /^[A-Za-z0-9\s]{5,50}$/.test(formulaire.adresse) )
+        // Fonction de test du nom
+        function nomControle()
+            {
+            if  (/^[A-Za-z]{3,20}$/.test(formulaire.nom))
+                {return true}
+            else
+                {document.querySelector("#nomManquant").innerHTML = "Veuillez remplir ce champ"
+                };
+            };
+
+                // Fonction de test de l'adresse
+        function adresseControle()
+            {
+            if  (/^[A-Za-z0-9\s]{5,50}$/.test(formulaire.adresse))
+                {return true}
+            else
+                {document.querySelector("#adresseManquant").innerHTML = "Veuillez remplir ce champ"
+                };
+            };
+        // Fonction de test de la ville
+        function villeControle()
+            {
+            if  (/^[A-Za-z]{3,20}$/.test(formulaire.ville))
+                {return true}
+            else
+                {document.querySelector("#villeManquant").innerHTML = "Veuillez remplir ce champ"
+                };
+            };
+
+        // Fonction de test du code postal
+        function codePostalControle()
+            {
+            if  (/^[0-9]{5}$/.test(formulaire.codePostal))
+                {return true}
+            else
+                {document.querySelector("#codePostalManquant").innerHTML = "Veuillez remplir ce champ"
+                };
+            };
+
+                    // Fonction de test de l'email
+        function emailControle()
+        {
+        if  (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formulaire.email))
+            {return true}
+        else
+            {document.querySelector("#emailManquant").innerHTML = "Veuillez remplir ce champ"
+            };
+        };
+        
+        // Si toutes les données sont vérifiés une à une, alors la commande est envoyée
+        if ( prenomControle() && nomControle() && adresseControle() && villeControle() && codePostalControle() && emailControle() )
             {
 
             // Création de l'objet qu'il faut envoyer au serveur
