@@ -26,3 +26,7 @@ a, ul, .card-body {
 .erreur__dans__le__formulaire{
     color: red;
 }
+
+.confirmation{
+    margin: 15% 5%;
+}

@@ -31,6 +31,7 @@ panier.forEach((element, i) => {
         </div>
     </a>
     <button type="button" class="btn btn-secondary">Supprimer</button>
+    
 
 
     `
