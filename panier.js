@@ -192,7 +192,7 @@ function popUpConfirmationCommande () {
             infoPourLeServeur = {
                 formulaire,
                 panier,
-            };
+                };
 
             // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
 

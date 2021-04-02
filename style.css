@@ -18,7 +18,7 @@ a, ul, .card-body {
 }
 
 .produit__info{
-    margin-top: 25%;
+    margin-top: 10%;
 }
 
 #button__panier{
@@ -44,7 +44,7 @@ a, ul, .card-body {
 .image__panier{
     width: 50%;
     height: 50%;
-    margin-top: 25%;
+    margin-top: 5%;
 }
 
 .produit{

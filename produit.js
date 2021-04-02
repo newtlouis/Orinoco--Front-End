@@ -2,7 +2,7 @@
 const positionElement = document.querySelector(".container__produit");
 
 
-// Recupération du numéro id de l'url
+// Recupération du numéro id du produit à partir de l'url
 
 const parametreUrl = window.location.search;
 const id = parametreUrl.slice(4);
@@ -10,12 +10,16 @@ const id = parametreUrl.slice(4);
 // Recupération des données du produit avec l'id sélectionné
 const url=`http://localhost:3000/api/teddies/${id}`;
 fetch(url)
-.then(res => res.json()
-    .then(data => {
-        affichageProduit(data);
+.then(res => res.json())
+.then(data => {
+    try { affichageProduit(data) }
+    catch (e)
+        {
+        console.dir(e);
+        alert("Désolé, une erreur est survenue")
         }
-    )
-)
+    })
+
 
 // fonction d'insertion des élements dans la page produit
 
