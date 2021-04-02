@@ -1,12 +1,17 @@
 // RECUPERATION DES DONNEES DE L'API
 const url="http://localhost:3000/api/teddies";
 fetch(url)
-.then(res => res.json()
+.then(res => res.json())
 .then(data => {
-    affichageProduits(data);
+    try { affichageProduits(data); }
+    catch(e) {
+        console.dir(e);
+        alert("Désolé, une erreur est survenue")
+        }
+    
     console.log(data);
 }
-));
+);
 
 
 
@@ -57,8 +62,6 @@ let positionElement = document.querySelector(".container__accueil");
     `
  });
 
-//  console.log(structureProduit);
-//  console.log(positionElement);
 
 //  Injection dans la balise du ficher HTML produit
  positionElement.innerHTML = structureProduit;
