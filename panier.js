@@ -1,112 +1,133 @@
+try { affichageProduitDansPanier() }
+catch (e)
+    {
+    console.dir(e);
+    alert("Désolé, une erreur est survenue")
+    };
+
+    
+try { ecouteBouton() }
+catch (e)
+    {
+    console.dir(e);
+    alert("Désolé, une erreur est survenue")
+    };
+
 // AFFICHAGE DES PRODUIS DANS LE PANIER
-// Selection de la balise dans laquelle on va inserer les data du produits choisi
-const positionElement = document.querySelector(".container__panier");
+function affichageProduitDansPanier(){
+    // Selection de la balise dans laquelle on va inserer les data du produits choisi
+    const positionElement = document.querySelector(".container__panier");
 
 
-// Récuperation des produits du paniers
-let panier = JSON.parse(localStorage.getItem("panier"));
+    // Récuperation des produits du paniers
+    let panier = JSON.parse(localStorage.getItem("panier"));
 
 
-// S'il y a des produits dans le panier => on affiche les produits et le formulaire
-if (panier){
+    // S'il y a des produits dans le panier => on affiche les produits et le formulaire
+    if (panier){
 
-// Bouche for pour ajouter les produits du panier dans la page panier
-structurePanier = "";
-panier.forEach((element, i) => {
+    // Bouche for pour ajouter les produits du panier dans la page panier
+    structurePanier = "";
+    panier.forEach((element, i) => {
 
-    // Création des textes qu'on va injecter dans le document
-    structurePanier += 
-    `
-    <a href="produit.html?id=${element.idProduit}">
-        <div class="produit">
-            <img class="image__panier" src="${element.imgProduit}" alt="">        
-            <div class="produit__info">
-                <ul>
-                    <li><strong>Produit:</strong> <span>${element.nomProduit}</span></li>
-                    <li><strong>Couleur:</strong> <span>${element.optionProduit}</span></li>
-                    <li><strong>Prix:</strong> <span>${element.prix}€</span></li>
-                    <li><strong>Quantité:</strong> <span>${element.quantité}</span></li>
-                </ul>
+        // Création des textes qu'on va injecter dans le document
+        structurePanier += 
+        `
+        <a href="produit.html?id=${element.idProduit}">
+            <div class="produit">
+                <img class="image__panier" src="${element.imgProduit}" alt="">        
+                <div class="produit__info">
+                    <ul>
+                        <li><strong>Produit:</strong> <span>${element.nomProduit}</span></li>
+                        <li><strong>Couleur:</strong> <span>${element.optionProduit}</span></li>
+                        <li><strong>Prix:</strong> <span>${element.prix}€</span></li>
+                        <li><strong>Quantité:</strong> <span>${element.quantité}</span></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </a>
-    
-    
+        </a>
+        
+        
 
 
-    `
- });
- positionElement.innerHTML = structurePanier;
+        `
+    });
+    positionElement.innerHTML = structurePanier;
 
-//  Création du total
-total = 0;
-panier.forEach(element => {
-    total+= element.prix;
-} );
-
-
-
-// Insertion du total dans le panier
-positionTotal = document.querySelector(".total");
-positionTotal.innerHTML = "<strong>Total:</strong> " + total + "€";
+    //  Création du total
+    total = 0;
+    panier.forEach(element => {
+        total+= element.prix;
+    } );
 
 
-// Affichage du formulaire
-// création du formulaire
-structureFormulaire = `
-<h2>Remplissez le formulaire pour passer la commande</h2>
-    
-    <span class="erreur__dans__le__formulaire" id="prenomManquant"></span>
-    <input id="prenom" name="prenom" class="form-control" type="text" placeholder="Prenom" aria-label="prenom">
-    <br/>
 
-    <span class="erreur__dans__le__formulaire" id="nomManquant"></span>
-    <input type="text" id="nom" name="nom" class="form-control" type="text" placeholder="Nom" aria-label="prenom">
-    <br/>
-
-    <span class="erreur__dans__le__formulaire" id="adresseManquant"></span>
-    <textarea id="adresse" name="adresse" class="form-control" type="text" placeholder="Adresse" aria-label="prenom"></textarea>
-    <br/>
-
-    <span class="erreur__dans__le__formulaire" id="villeManquant"></span>
-    <input type="text" id="ville" class="form-control" type="text" placeholder=Ville aria-label="prenom">
-    <br/>
-
-    <span class="erreur__dans__le__formulaire" id="codePostalManquant"></span>
-    <input type="text" id="codePostal" name="codePostal" class="form-control" type="text" placeholder="Code postal" aria-label="prenom">
-    <br/>
-
-    <span class="erreur__dans__le__formulaire" id="emailManquant"></span>
-    <input type="text" id="email" name="email" class="form-control" type="text" placeholder="Email" aria-label="prenom">
-    <br/>
-
-    <button id="envoyerFormulaire" class="btn btn-success" type="submit">Confirmation de la commande</button>
-    
-`;
-//  Injection dans le fichier HTML
-positionFormulaire = document.querySelector(".formulaire");
-positionFormulaire.innerHTML = structureFormulaire; 
+    // Insertion du total dans le panier
+    positionTotal = document.querySelector(".total");
+    positionTotal.innerHTML = "<strong>Total:</strong> " + total + "€";
 
 
-}
+    // Affichage du formulaire
+    // création du formulaire
+    structureFormulaire = `
+    <h2>Remplissez le formulaire pour passer la commande</h2>
+        
+        <span class="erreur__dans__le__formulaire" id="prenomManquant"></span>
+        <input id="prenom" name="prenom" class="form-control" type="text" placeholder="Prenom" aria-label="prenom">
+        <br/>
 
-// si le panier est vide: afficher "panier vide"
-else {
-    positionElement.innerHTML = "Votre panier est vide"
-}
+        <span class="erreur__dans__le__formulaire" id="nomManquant"></span>
+        <input type="text" id="nom" name="nom" class="form-control" type="text" placeholder="Nom" aria-label="prenom">
+        <br/>
+
+        <span class="erreur__dans__le__formulaire" id="adresseManquant"></span>
+        <textarea id="adresse" name="adresse" class="form-control" type="text" placeholder="Adresse" aria-label="prenom"></textarea>
+        <br/>
+
+        <span class="erreur__dans__le__formulaire" id="villeManquant"></span>
+        <input type="text" id="ville" class="form-control" type="text" placeholder=Ville aria-label="prenom">
+        <br/>
+
+        <span class="erreur__dans__le__formulaire" id="codePostalManquant"></span>
+        <input type="text" id="codePostal" name="codePostal" class="form-control" type="text" placeholder="Code postal" aria-label="prenom">
+        <br/>
+
+        <span class="erreur__dans__le__formulaire" id="emailManquant"></span>
+        <input type="text" id="email" name="email" class="form-control" type="text" placeholder="Email" aria-label="prenom">
+        <br/>
+
+        <button id="envoyerFormulaire" class="btn btn-success" type="submit">Confirmation de la commande</button>
+        
+    `;
+    //  Injection dans le fichier HTML
+    positionFormulaire = document.querySelector(".formulaire");
+    positionFormulaire.innerHTML = structureFormulaire; 
 
 
-// ENVOIE DU FORMULAIRE AU LOCAL STORAGE
+    }
 
-// Au clic du bouton envoyer
-btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
-btnEnvoyerFormulaire.addEventListener("click",(e) => {
-    e.preventDefault();
-    popUpConfirmationCommande();
-});
+    // si le panier est vide: afficher "panier vide"
+    else {
+        positionElement.innerHTML = "Votre panier est vide"
+    }
+};
+
+
+// ENVOIE DU FORMULAIRE et du panier commandé AU LOCAL STORAGE
+function ecouteBouton(){
+    // Au clic du bouton envoyer
+    btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
+    btnEnvoyerFormulaire.addEventListener("click",(e) => {
+        e.preventDefault();
+        popUpConfirmationCommande();
+    });
+};
 
 // Fonction pop up de confirmation
 function popUpConfirmationCommande () {
+
+    // Récuperation des produits du paniers
+    let panier = JSON.parse(localStorage.getItem("panier"));
 
     // Si le client confirme la commande, alors on envoie la commande
     if ( window.confirm(`Souhaitez vous passer commande ? `) )

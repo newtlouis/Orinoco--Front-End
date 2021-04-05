@@ -11,6 +11,7 @@ const url=`http://localhost:3000/api/teddies/${id}`;
 fetch(url)
 .then(res => res.json())
 .then(data => {
+    // Affichage du produit dans la page produit
     try { affichageProduit(data) }
     catch (e)
         {
@@ -19,8 +20,15 @@ fetch(url)
         }
     })
 
+// ENVOI DU PANIER
+try { envoiAuPanier() }
+catch (e)
+    {
+    console.dir(e);
+    alert("Désolé, une erreur est survenue")
+    }
 
-// fonction d'insertion des élements dans la page produit
+// fonction d'insertion des élements dans la page produit   
 function affichageProduit (data) {
     // variable à inserer
     nom = data.name;
@@ -74,57 +82,62 @@ function affichageProduit (data) {
 
 };
 
-// ENVOI DU PANIER
-// Selection du bouton panier
-const btnEnvoyerPanier = document.querySelector("#button__panier");
 
-// ecoute du panier
-btnEnvoyerPanier.addEventListener("click",(e) => {
-    e.preventDefault();
 
-    // Choix de l'option
-    idForm = document.querySelector("#couleurs");
-    let optionChoice = idForm.value;
-    
-    // Création de l'objet qu'on enverra au serveur
-    let optionProduit = {
-        nomProduit : nom,   
-        idProduit : id,
-        optionProduit : optionChoice,
-        quantité : 1,
-        prix : price/100,
-        imgProduit : imageUrl,
-    };
-    
+// Fonction envoie du panier
+function envoiAuPanier() {
+    // Selection du bouton panier
+    const btnEnvoyerPanier = document.querySelector("#button__panier");
 
-    // Connexion au local storage et récupération du panier
-    let panier = JSON.parse(localStorage.getItem("panier"));
-    console.log(panier);
+    // ecoute du panier
+    btnEnvoyerPanier.addEventListener("click",(e) => {
+        e.preventDefault();
 
-    // Si le panier n'est pas vide: alors on y ajoute le nouveau produit et on renvoit le tout 
-    if(panier) {
-        panier.push(optionProduit);
-        localStorage.setItem("panier",JSON.stringify(panier));
-        popUpConfirmation();
-    }
-    // S'il n'est pas vide, alors on crée un panier
-    else {
-        panier = [];
-        panier.push(optionProduit);
-        localStorage.setItem("panier",JSON.stringify(panier));
-        popUpConfirmation();
+        // Choix de l'option
+        idForm = document.querySelector("#couleurs");
+        let optionChoice = idForm.value;
         
-    }
+        // Création de l'objet qu'on enverra au serveur
+        let optionProduit = {
+            nomProduit : nom,   
+            idProduit : id,
+            optionProduit : optionChoice,
+            quantité : 1,
+            prix : price/100,
+            imgProduit : imageUrl,
+        };
+        
 
-      // Fonction pop up de confirmation
-      function popUpConfirmation () {
-        if ( window.confirm(`${nom} en couleur ${optionChoice} à bien été ajouter au panier. Cliquez sur OK pour consulter votre panier et ANNULER pour revenir à la page d'accueil.`) )
-        {
-            window.location.href = "panier.html";
+        // Connexion au local storage et récupération du panier
+        let panier = JSON.parse(localStorage.getItem("panier"));
+        console.log(panier);
+
+        // Si le panier n'est pas vide: alors on y ajoute le nouveau produit et on renvoit le tout 
+        if(panier) {
+            panier.push(optionProduit);
+            localStorage.setItem("panier",JSON.stringify(panier));
+            popUpConfirmation();
         }
-        else { window.location.href = "index.html";}
+        // S'il n'est pas vide, alors on crée un panier
+        else {
+            panier = [];
+            panier.push(optionProduit);
+            localStorage.setItem("panier",JSON.stringify(panier));
+            popUpConfirmation();
+            
+        }
+
+        // Fonction pop up de confirmation
+        function popUpConfirmation () {
+            if ( window.confirm(`${nom} en couleur ${optionChoice} à bien été ajouter au panier. Cliquez sur OK pour consulter votre panier et ANNULER pour revenir à la page d'accueil.`) )
+            {
+                window.location.href = "panier.html";
+            }
+            else { window.location.href = "index.html";}
+        }
+
+        })
     }
 
-    })
 
   
