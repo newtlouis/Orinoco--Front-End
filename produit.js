@@ -3,7 +3,6 @@ const positionElement = document.querySelector(".container__produit");
 
 
 // Recupération du numéro id du produit à partir de l'url
-
 const parametreUrl = window.location.search;
 const id = parametreUrl.slice(4);
 
@@ -22,7 +21,6 @@ fetch(url)
 
 
 // fonction d'insertion des élements dans la page produit
-
 function affichageProduit (data) {
     // variable à inserer
     nom = data.name;

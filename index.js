@@ -27,7 +27,6 @@ let description = [];
 let imageUrl = [];
 let colors = [];
 structureProduit = ""
-let positionElement = document.querySelector(".container__accueil"); 
 // Boucle for des élements API pour récupéper les données et insérer chaque produit dans la page d'accueil un à un
 
  data.forEach((element, i) => {
@@ -64,6 +63,7 @@ let positionElement = document.querySelector(".container__accueil");
 
 
 //  Injection dans la balise du ficher HTML produit
+let positionElement = document.querySelector(".container__accueil"); 
  positionElement.innerHTML = structureProduit;
 
 }
