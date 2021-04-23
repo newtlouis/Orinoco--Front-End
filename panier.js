@@ -10,7 +10,6 @@ try { ecouteBouton() }
 catch (e)
     {
     console.dir(e);
-    alert("Désolé, une erreur est survenue")
     };
 
 // AFFICHAGE DES PRODUIS DANS LE PANIER
