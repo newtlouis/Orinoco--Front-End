@@ -10,8 +10,8 @@ fetch(url)
         }
     
     console.log(data);
-}
-);
+    })
+.catch(err => console.log("ERREUR dans le fetch de l'api"));
 
 
 
@@ -27,8 +27,8 @@ let description = [];
 let imageUrl = [];
 let colors = [];
 structureProduit = ""
-// Boucle for des élements API pour récupéper les données et insérer chaque produit dans la page d'accueil un à un
 
+// Boucle for des élements API pour récupéper les données et insérer chaque produit dans la page d'accueil un à un
  data.forEach((element, i) => {
     id[i] =  element._id;
     nom[i] = element.name;
