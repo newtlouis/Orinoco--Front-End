@@ -219,17 +219,22 @@ function popUpConfirmationCommande () {
         if ( prenomControle() && nomControle() && adresseControle() && villeControle() && codePostalControle() && emailControle() )
             {
 
+            // Récupération des id des produits du panier
+            let listIdProduit = [];
+            panier.forEach((element, i) => {
+                listIdProduit.push(element.idProduit)
+            });
+
             // Création de l'objet qu'il faut envoyer au serveur
             infoPourLeServeur = {
                 formulaire,
-                panier,
+                listIdProduit,
                 };
 
             // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
 
      // Connexion au local storage et récupération du panier
             let commandes = JSON.parse(localStorage.getItem("Commandes"));
-            console.log(commandes);
  
             // Si il y a déjà des commandes, alors on y ajoute la nouvelle commande et on renvoit le tout 
             if(commandes) {

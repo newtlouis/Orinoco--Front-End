@@ -1,3 +1,4 @@
+// TOTAL
 // Connexion au localstorage pour récupérer le montant de la commande !
 let total = JSON.parse(localStorage.getItem("total"));
 console.log(total[0]);
