@@ -116,19 +116,19 @@ function envoiAuPanier() {
         if(panier) {
             panier.push(optionProduit);
             localStorage.setItem("panier",JSON.stringify(panier));
-            popUpConfirmation();
+            confirmationProduit();
         }
         // S'il n'est pas vide, alors on crée un panier
         else {
             panier = [];
             panier.push(optionProduit);
             localStorage.setItem("panier",JSON.stringify(panier));
-            popUpConfirmation();
+            confirmationProduit();
             
         }
 
         // Fonction pop up de confirmation
-        function popUpConfirmation () {
+        function confirmationProduit () {
             if ( window.confirm(`${nom} en couleur ${optionChoice} à bien été ajouter au panier. Cliquez sur OK pour consulter votre panier et ANNULER pour revenir à la page d'accueil.`) )
             {
                 window.location.href = "panier.html";

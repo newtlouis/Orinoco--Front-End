@@ -129,12 +129,12 @@ function ecouteBouton(){
     btnEnvoyerFormulaire = document.querySelector("#envoyerFormulaire");
     btnEnvoyerFormulaire.addEventListener("click",(e) => {
         e.preventDefault();
-        popUpConfirmationCommande();
+        ConfirmationCommande();
     });
 };
 
 // Fonction pop up de confirmation
-function popUpConfirmationCommande () {
+function ConfirmationCommande () {
 
     // Récuperation des produits du paniers
     let panier = JSON.parse(localStorage.getItem("panier"));
@@ -233,7 +233,7 @@ function popUpConfirmationCommande () {
 
             // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
 
-     // Connexion au local storage et récupération du panier
+            // Connexion au local storage et récupération du panier
             let commandes = JSON.parse(localStorage.getItem("Commandes"));
  
             // Si il y a déjà des commandes, alors on y ajoute la nouvelle commande et on renvoit le tout 
