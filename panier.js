@@ -65,6 +65,17 @@ function affichageProduitDansPanier(){
     positionTotal = document.querySelector(".total");
     positionTotal.innerHTML = "<strong>Total:</strong> " + total + "€";
 
+    // Envoi du total dans le localstorage pour que la page de confirmation réutilise cette donnée
+    // Suppression du total du localstorage
+    localStorage.removeItem("total");
+    totalForConfirmation = [];
+    totalForConfirmation.push(total);
+    localStorage.setItem("total",JSON.stringify(totalForConfirmation));
+
+    
+
+ 
+
 
     // Affichage du formulaire
     // création du formulaire
