@@ -16,28 +16,44 @@ positionTotal.innerHTML = total[0];
 
 // ID COMMANDE
 
+
+
+
 function afficherIdCommande(){
-// On récuper le dernier id et on réinitialise le stockage
-let idPreview = JSON.parse(localStorage.getItem("idCommande"));
-localStorage.removeItem("idCommande");
+    // On récuper le dernier id et on réinitialise le stockage
+    let idPreview = JSON.parse(localStorage.getItem("idCommande"));
+    localStorage.removeItem("idCommande");
+    let id = Math.floor(Math.random() * 10000000000000001);
 
-if (idPreview) {
-    idCommande = idPreview[0] + 1;
-    idPreview = [];
-    idPreview.push(idCommande);
-    localStorage.setItem("idCommande",JSON.stringify(idPreview));
-}
+    if(idPreview) {
 
-else {
-    idCommande = 1;
-    idPreview = [];
-    idPreview.push(idCommande);
-    localStorage.setItem("idCommande",JSON.stringify(idPreview));
+        if (idPreview.includes(id)) {
+        randomID;}
+        
+        else {
+        idPreview.push(id);
+        localStorage.setItem("idCommande",JSON.stringify(idPreview));
+        
+        // Insertion de l'idCommande dans la page
+        let positionIdCommande = document.querySelector(".idCommande");
+        positionIdCommande.innerHTML = id;
 
-}
+        }
+    }
+
+    else {
+        idPreview = [];
+        idPreview.push(id);
+        localStorage.setItem("idCommande",JSON.stringify(idPreview));
+
+        // Insertion de l'idCommande dans la page
+        let positionIdCommande = document.querySelector(".idCommande");
+        positionIdCommande.innerHTML = id;
+
+    }
+};
 
 
-// Insertion de l'idCommande dans la page
-let positionIdCommande = document.querySelector(".idCommande");
-positionIdCommande.innerHTML = idCommande;
-}
+
+
+

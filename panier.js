@@ -232,6 +232,14 @@ function ConfirmationCommande () {
                 };
 
             // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
+            // fetch("http://localhost:3000/api/teddies/order", {
+            //     method: “POST”,
+            //     headers: { 
+            // 'Accept': 'application/json', 
+            // 'Content-Type': 'application/json' 
+            // },
+            //     body: JSON.stringify(infoPourLeServeur)
+            // });
 
             // Connexion au local storage et récupération du panier
             let commandes = JSON.parse(localStorage.getItem("Commandes"));
