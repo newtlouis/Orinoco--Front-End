@@ -144,22 +144,22 @@ function ConfirmationCommande () {
         {
 
          // Rassemblez les données du formulaire
-        formulaire = {
-            prenom : document.querySelector("#prenom").value,
-            nom : document.querySelector("#nom").value,
-            adresse : document.querySelector("#adresse").value,
-            ville : document.querySelector("#ville").value,
-            codePostal : document.querySelector("#codePostal").value,
+        contact = {
+            firstName : document.querySelector("#prenom").value,
+            lastName : document.querySelector("#nom").value,
+            adress : document.querySelector("#adresse").value,
+            city : document.querySelector("#ville").value,
+            // codePostal : document.querySelector("#codePostal").value,
             email : document.querySelector("#email").value,
             };
 
         // Si le texte des données du formulaire est bon, alors on execute le reste du code
-        console.log(formulaire.prenom);
+        
 
         // Fonction de test du prenom
         function prenomControle()
             {
-            if  (/^[A-Za-z]{3,20}$/.test(formulaire.prenom))
+            if  (/^[A-Za-z]{3,20}$/.test(contact.firstName))
                 {return true}
             else
                 {document.querySelector("#prenomManquant").innerHTML = "Veuillez remplir ce champ"
@@ -169,7 +169,7 @@ function ConfirmationCommande () {
         // Fonction de test du nom
         function nomControle()
             {
-            if  (/^[A-Za-z]{3,20}$/.test(formulaire.nom))
+            if  (/^[A-Za-z]{3,20}$/.test(contact.lastName))
                 {return true}
             else
                 {document.querySelector("#nomManquant").innerHTML = "Veuillez remplir ce champ"
@@ -179,7 +179,7 @@ function ConfirmationCommande () {
                 // Fonction de test de l'adresse
         function adresseControle()
             {
-            if  (/^[A-Za-z0-9\s]{5,50}$/.test(formulaire.adresse))
+            if  (/^[A-Za-z0-9\s]{5,50}$/.test(contact.adress))
                 {return true}
             else
                 {document.querySelector("#adresseManquant").innerHTML = "Veuillez remplir ce champ"
@@ -188,7 +188,7 @@ function ConfirmationCommande () {
         // Fonction de test de la ville
         function villeControle()
             {
-            if  (/^[A-Za-z]{3,20}$/.test(formulaire.ville))
+            if  (/^[A-Za-z]{3,20}$/.test(contact.city))
                 {return true}
             else
                 {document.querySelector("#villeManquant").innerHTML = "Veuillez remplir ce champ"
@@ -198,7 +198,7 @@ function ConfirmationCommande () {
         // Fonction de test du code postal
         function codePostalControle()
             {
-            if  (/^[0-9]{5}$/.test(formulaire.codePostal))
+            if  (/^[0-9]{5}$/.test(document.querySelector("#codePostal").value))
                 {return true}
             else
                 {document.querySelector("#codePostalManquant").innerHTML = "Veuillez remplir ce champ"
@@ -208,7 +208,7 @@ function ConfirmationCommande () {
                     // Fonction de test de l'email
         function emailControle()
         {
-        if  (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formulaire.email))
+        if  (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(contact.email))
             {return true}
         else
             {document.querySelector("#emailManquant").innerHTML = "Veuillez remplir ce champ"
@@ -220,26 +220,31 @@ function ConfirmationCommande () {
             {
 
             // Récupération des id des produits du panier
-            let listIdProduit = [];
+            let products = [];
             panier.forEach((element, i) => {
-                listIdProduit.push(element.idProduit)
+                products.push(element.idProduit)
             });
 
             // Création de l'objet qu'il faut envoyer au serveur
             infoPourLeServeur = {
-                formulaire,
-                listIdProduit,
+                contact,
+                products,
                 };
 
             // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
-            // fetch("http://localhost:3000/api/teddies/order", {
-            //     method: “POST”,
-            //     headers: { 
-            // 'Accept': 'application/json', 
-            // 'Content-Type': 'application/json' 
-            // },
-            //     body: JSON.stringify(infoPourLeServeur)
-            // });
+            fetch("http://localhost:3000/api/teddies/order", {
+                method: 'POST',
+                headers: { 
+            'Accept': 'application/json', 
+            'Content-Type': 'application/json' 
+            },
+                body: JSON.stringify(infoPourLeServeur)
+            });
+
+
+
+
+
 
             // Connexion au local storage et récupération du panier
             let commandes = JSON.parse(localStorage.getItem("Commandes"));
