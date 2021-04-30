@@ -147,7 +147,7 @@ function ConfirmationCommande () {
         contact = {
             firstName : document.querySelector("#prenom").value,
             lastName : document.querySelector("#nom").value,
-            adress : document.querySelector("#adresse").value,
+            address : document.querySelector("#adresse").value,
             city : document.querySelector("#ville").value,
             // codePostal : document.querySelector("#codePostal").value,
             email : document.querySelector("#email").value,
@@ -231,15 +231,19 @@ function ConfirmationCommande () {
                 products,
                 };
 
-            // Envoie du formulaire de contact, ainsi que les produits commandés au serveur
+            // Envoie du formulaire de contact, ainsi que les produits commandés à l'API
+            let infos = JSON.stringify(infoPourLeServeur);
             fetch("http://localhost:3000/api/teddies/order", {
+
                 method: 'POST',
                 headers: { 
             'Accept': 'application/json', 
             'Content-Type': 'application/json' 
             },
-                body: JSON.stringify(infoPourLeServeur)
-            });
+                body: infos,
+            }).then((resp) => console.log(resp.json()));
+            
+
 
 
 
@@ -258,7 +262,7 @@ function ConfirmationCommande () {
                 localStorage.removeItem("panier");
 
                 // Redirection vers la page de confirmation
-                window.location.href = "confirmation.html"
+                // window.location.href = "confirmation.html"
          
                 }
             // S'il n'y a pas encore de commande', alors on crée une commande vide et on la rempli
@@ -271,7 +275,7 @@ function ConfirmationCommande () {
                 localStorage.removeItem("panier");
 
                 // Redirection vers la page de confirmation
-                window.location.href = "confirmation.html"
+                // window.location.href = "confirmation.html"
         
                 };
  
