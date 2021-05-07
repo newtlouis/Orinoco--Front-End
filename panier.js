@@ -262,7 +262,7 @@ function ConfirmationCommande () {
                 localStorage.removeItem("panier");
 
                 // Redirection vers la page de confirmation
-                // window.location.href = "confirmation.html"
+                window.location.href = "confirmation.html"
          
                 }
             // S'il n'y a pas encore de commande', alors on crée une commande vide et on la rempli
@@ -275,7 +275,7 @@ function ConfirmationCommande () {
                 localStorage.removeItem("panier");
 
                 // Redirection vers la page de confirmation
-                // window.location.href = "confirmation.html"
+                window.location.href = "confirmation.html"
         
                 };
  
