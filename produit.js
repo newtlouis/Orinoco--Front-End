@@ -118,7 +118,7 @@ function envoiAuPanier() {
             localStorage.setItem("panier",JSON.stringify(panier));
             confirmationProduit();
         }
-        // S'il n'est pas vide, alors on crée un panier
+        // S'il est vide, alors on crée un panier
         else {
             panier = [];
             panier.push(optionProduit);

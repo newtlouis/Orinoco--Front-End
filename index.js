@@ -8,8 +8,6 @@ fetch(url)
         console.dir(e);
         alert("Désolé, une erreur est survenue")
         }
-    
-    console.log(data);
     })
 .catch(err => console.log("ERREUR dans le fetch de l'api"));
 
@@ -39,9 +37,7 @@ structureProduit = ""
 
     // Création des textes qu'on va injecter dans le document
     structureProduit += 
-    `
-        
-
+    `      
     <a href="produit.html?id=${id[i]}">
         <div class="card" style="width: 18rem;">
             <img src="${imageUrl[i]}" class="card-img-top" alt="...">

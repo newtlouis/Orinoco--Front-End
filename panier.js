@@ -241,7 +241,21 @@ function ConfirmationCommande () {
             'Content-Type': 'application/json' 
             },
                 body: infos,
-            }).then((resp) => console.log(resp.json()));
+                // On récupère la promesse
+            }).then((resp) => {
+                res = resp.json();
+                console.log(res);
+                // On récupère les valeurs de la promesse, et ensuite l'Id créé
+                res.then((value) => {
+                    Id = value.orderId
+                    console.log(Id);
+                    localStorage.setItem("idCommande",JSON.stringify(Id));
+
+                    
+                  });
+                
+            
+            });
             
 
 

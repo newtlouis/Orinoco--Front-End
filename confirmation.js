@@ -21,36 +21,14 @@ positionTotal.innerHTML = total[0];
 
 function afficherIdCommande(){
     // On récuper le dernier id et on réinitialise le stockage
-    let idPreview = JSON.parse(localStorage.getItem("idCommande"));
+    let Id = JSON.parse(localStorage.getItem("idCommande"));
     localStorage.removeItem("idCommande");
-    let id = Math.floor(Math.random() * 10000000000000001);
+    
+    // Insertion de l'idCommande dans la page
+    let positionIdCommande = document.querySelector(".idCommande");
+    positionIdCommande.innerHTML = Id;
 
-    if(idPreview) {
-
-        if (idPreview.includes(id)) {
-        randomID;}
-        
-        else {
-        idPreview.push(id);
-        localStorage.setItem("idCommande",JSON.stringify(idPreview));
-        
-        // Insertion de l'idCommande dans la page
-        let positionIdCommande = document.querySelector(".idCommande");
-        positionIdCommande.innerHTML = id;
-
-        }
-    }
-
-    else {
-        idPreview = [];
-        idPreview.push(id);
-        localStorage.setItem("idCommande",JSON.stringify(idPreview));
-
-        // Insertion de l'idCommande dans la page
-        let positionIdCommande = document.querySelector(".idCommande");
-        positionIdCommande.innerHTML = id;
-
-    }
+    
 };
 
 
