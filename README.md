@@ -1,15 +1,35 @@
-# Orinoco #
 
-This is the back end server for Project 5 of the Junior Web Developer path.
+# Orinoco !- Ecommerce
+Création de la partie Front End dans le cadre de la création d'un Ecommerce. La partie back end étant déjà réalisée.
+## Technologies utilisées :
 
-### Prerequisites ###
+HTML5
 
-You will need to have Node and `npm` installed locally on your machine.
+CSS3
 
-### Installation ###
+JAVASCRIPT
 
-Clone this repo. From within the project folder, run `npm install`. You 
-can then run the server with `node server`. 
-The server should run on `localhost` with default port `3000`. If the
-server runs on another port for any reason, this is printed to the
-console when the server starts, e.g. `Listening on port 3001`.
+SASS
+
+
+## Site web dynamique
+
+Dans le cadre de ce projet, seul la partie front a été réalisée.
+
+!!! IMPORTANT !!! Pour que le site soit fonctionnel, le serveur back-end doit être actif
+
+Front: Envoi les requêtes par défaut à 'http://localhost:3000'
+
+Serveur Front disponible içi:
+https://newtlouis.github.io/Orinoco--Front-End/
+
+Back: Le serveur back sous Node est disponible ici:
+https://github.com/newtlouis/Orinoco--back-end
+
+ Une fois le repo cloné, executer dans le terminal du projet :
+
+npm install
+
+node server
+
+Par défaut le serveur écoutera le localhost au port 3000.
