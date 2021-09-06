@@ -5,11 +5,11 @@ Création de la partie Front End dans le cadre de la création d'un Ecommerce. L
 
 HTML5
 
-CSS3
+BOOTSTRAP
 
 JAVASCRIPT
 
-SASS
+
 
 
 ## Site web dynamique
